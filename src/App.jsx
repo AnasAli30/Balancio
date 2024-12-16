@@ -6,6 +6,11 @@ import Content from './Component/Content'
 import Web3Provider from './context/web3Provider'
 import Btn from './Component/Btn'
 import { getWeb3State } from './utiles/getWeb3State'
+import Search from './Component/Search'
+import ProfileDetails from './Component/ProfileDetails'
+import MinorDetails from "./Component/MinorDetails"
+import MajorDetails from "./Component/MajorDetails"
+
 
 function App() {
   const [count, setCount] = useState(0)
@@ -29,14 +34,18 @@ const handleWallet = async()=>{
     <div className="Container">
     <div className="nav">
       <h1 className='title'>Balancio</h1>
-    <Btn className="btn" handleWallet={handleWallet} web3state={web3state}></Btn>
+       <Search></Search>
     </div>
+    <ProfileDetails accDetails={web3state}></ProfileDetails>
+    <MinorDetails></MinorDetails>
+    <MajorDetails></MajorDetails>
+    <div className="line"></div>
     <div className="content">
     <Web3Provider web3state={web3state}>
     <Content></Content>
     </Web3Provider>
     </div>
- 
+    <Btn className="btn" handleWallet={handleWallet} web3state={web3state}></Btn>
 
     </div>
    

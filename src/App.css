@@ -4,6 +4,12 @@
   padding: 0;
 }
 
+.Container{
+  width: 90%;
+  margin: 0 auto;
+}
+
+
 .nav{
   /* border: 1px solid white; */
   height: 70px;
@@ -16,6 +22,42 @@
 
 .nav .title{
  text-transform: uppercase;
+}
+
+.Search{
+  /* border: 2px solid #f6f6f6;  */
+  border: 1px solid #c5c3c3; 
+  border-radius: 20px;
+  background-color: #2b2b2b;
+  padding-left: 10px;
+}
+
+.Search i{
+  color: rgb(255, 255, 255);
+  margin: 2px;
+  transition: 0.3s ease-in-out;
+}
+
+.Search input{
+  height: 40px;
+  background-color: #2b2b2b;
+  /* border: 2px solid #f6f6f6;  */
+  border: none;
+  border-radius: 0px 20px 20px 0px;
+  width: 250px;
+  padding: 0px 10px;
+  outline: none;   
+  transition: 0.5s ease-in-out;
+}
+
+.Search:focus-within {
+  border: 1px solid #ff8c00; 
+  box-shadow: 0 0 5px rgba(237, 120, 3, 0.5); 
+  color: #ff8c00;
+}
+
+.Search:focus-within i {
+  color: #ff8c00; /* Change to your desired color */
 }
 
 .nav .btn{
@@ -31,3 +73,155 @@
 .content{
   margin: 50px 10px;
 }
+
+.ProfileDetails{
+  display: flex;
+  /* align-items: center; */
+  margin-top: 40px;
+  /* justify-content: space-evenly; */
+  width: 650px;
+}
+
+.Profile{
+  border: 1px solid rgba(255, 255, 255, 0);
+  border-radius: 50%;
+  overflow:hidden;
+  margin-right:15px;
+}
+
+
+
+.Profile img{
+  scale: 1.2;
+  transition: 0.3s ease-in-out;
+}
+
+.Profile img:hover{
+  scale: 1.1;
+}
+
+.detail{
+  line-height: 3px;
+}
+
+.detail .id{
+  color: #313131;
+  font-size: 23px;
+}
+
+
+.detail .address p{
+  display: inline-block;
+  margin-right: 20px;
+  color: #4b4b4b;
+  font-weight: bold;
+  transition: 0.3s ease-in-out;
+  cursor: pointer;
+}
+
+
+.detail .address p:hover{
+  color: #616161;
+}
+
+
+
+.detail .bio{
+ color: #3d3d3d; 
+}
+
+.detail .address i{
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 12px;
+  background-color: #262525;
+  color: #817f7f;
+  text-align: center;
+}
+
+.tooltip {
+  visibility: hidden;
+  background-color: #333;
+  color: #fff;
+  text-align: center;
+  border-radius: 4px;
+  padding: 5px 10px;
+  position: absolute;
+  bottom: 120%; /* Position the tooltip above the text */
+  left: 50%;
+  transform: translateX(-50%);
+  white-space: nowrap;
+  opacity: 1;
+  transition: opacity 0.3s;
+  z-index: 1000; /* Ensure it appears above other elements */
+}
+
+
+.detail .address i:hover {
+  color: #b5b5b5;
+}
+
+.Minor{
+  margin: 20px;
+}
+
+.Minor .Active{
+  
+  display: inline-block;
+  padding: 2px 7px;
+  font-size: 13px;
+  text-align: center;
+  border-radius: 20px;
+  background-color: #262525;
+  color: #777676;
+}
+
+.Minor .Active i{
+  /* font-size: 15px; */
+  padding-right: 5px;
+}
+
+.line{
+  margin-top: 20px;
+  border: 1px solid rgb(167, 166, 166);
+}
+
+.MajorDetails{
+  display: flex;
+  align-items: center;
+}
+
+.MajorDetails .Mdetail{
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.MajorDetails .Mdetail span{
+color: #777676;
+}
+
+.MajorDetails .follow{
+  padding: 2px;
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  margin-left: 15px;
+  height: 25px;
+  border: none;
+  width: 90px;
+  border-radius: 70px;
+background-color: #fe815f;
+color: white;
+cursor: pointer;
+}
+
+.MajorDetails .hr{
+  border: 1px solid rgb(73, 73, 73);
+  height: 45px;
+}
+
+.MajorDetails .follow i{
+  margin: 0px 9px;
+  font-size: 15px;
+}  
+
