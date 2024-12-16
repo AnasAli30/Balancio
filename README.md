@@ -1,8 +1,10 @@
-# React + Vite
+# Balancio
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Balancio is a powerful tool that provides a unified view of all balances across various cryptocurrency chains for a given address. It simplifies tracking and managing assets spread across multiple blockchains.
 
-Currently, two official plugins are available:
+## 🚀 Features
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- Fetch balances from multiple blockchain networks.
+- Supports major cryptocurrencies and tokens.
+- User-friendly and intuitive interface.
+- Real-time updates for accurate tracking.
