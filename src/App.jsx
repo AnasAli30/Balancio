@@ -10,10 +10,14 @@ import Search from './Component/Search'
 import ProfileDetails from './Component/ProfileDetails'
 import MinorDetails from "./Component/MinorDetails"
 import MajorDetails from "./Component/MajorDetails"
+import Balance from './Component/Balance'
+import ChainDetails from "./Component/ChainDetails"
+
 
 
 function App() {
   const [count, setCount] = useState(0)
+  let [buttn,setbuttn] = useState("connect");
   const [web3state,setweb3state] = useState({
     contractInstance:null,
     selectedAccount:null,
@@ -22,8 +26,19 @@ function App() {
 })
 const handleWallet = async()=>{
     try{
-        const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
+      
+      console.log(buttn)
+      if(buttn=="Disconnect"){
+        setweb3state({undefined})
+        setbuttn("connect again");
+      }else{
+        setbuttn("connecting");
+      const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({contractInstance,selectedAccount,chainId,balance})
+        selectedAccount==undefined?setbuttn("connect again"):setbuttn("Disconnect");
+      }
+
+      
     }catch(error){
         console.error(error)
     }
@@ -33,24 +48,20 @@ const handleWallet = async()=>{
     <>
     <div className="Container">
     <div className="nav">
-      <h1 className='title'>Balancio</h1>
+    <Btn className="follow" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn>
        <Search></Search>
     </div>
-    <ProfileDetails accDetails={web3state}></ProfileDetails>
+    <ProfileDetails accDetails={web3state} handleWallet={handleWallet} web3state={web3state} btn={buttn}></ProfileDetails>
     <MinorDetails></MinorDetails>
     <MajorDetails></MajorDetails>
+    
     <div className="line"></div>
-    <div className="content">
-    <Web3Provider web3state={web3state}>
-    <Content></Content>
-    </Web3Provider>
+    {/* <div className="content"> */}
+    <Balance></Balance>
+    {/* </div> */}
+    {/* <Btn className="btn" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn> */}
+<ChainDetails web3state={web3state}></ChainDetails>
     </div>
-    <Btn className="btn" handleWallet={handleWallet} web3state={web3state}></Btn>
-
-    </div>
-   
-   
-  
     </>
   )
 }

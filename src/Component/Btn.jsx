@@ -1,8 +1,9 @@
-import React from 'react'
+import React, { useState } from 'react'
 
-export default function Btn({handleWallet,web3state}) {
+export default function Btn({handleWallet,btn}) {
+
      return <>
       <input onClick={handleWallet}
-            className='btn' type="button" value={web3state.selectedAccount==undefined?"Connect Wallet":"Connected"} />
+            className='follow' type="button" value={btn} />
             </>
 }

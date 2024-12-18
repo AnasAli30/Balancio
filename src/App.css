@@ -182,7 +182,7 @@
 }
 
 .line{
-  margin-top: 20px;
+  margin-top: 10px;
   border: 1px solid rgb(167, 166, 166);
 }
 
@@ -200,7 +200,7 @@
 color: #777676;
 }
 
-.MajorDetails .follow{
+.follow{
   padding: 2px;
   display: flex;
   align-items: center;
@@ -224,4 +224,77 @@ cursor: pointer;
   margin: 0px 9px;
   font-size: 15px;
 }  
+
+.Balance{
+  margin-top: 10px;
+  /* border: 1px solid white; */
+  display: flex;
+  position: relative;
+  justify-content: space-around;
+  align-items: center;
+  height: 50px;
+}
+
+.Balance .box{
+  cursor: pointer;
+  position: relative;
+  transition: 0.3s ease-in-out;
+}
+
+
+.Balance .box:hover .underline{
+  border: 1px solid white;
+  width: 100%;
+}
+
+.Balance .underline{
+  position: absolute;;
+  border: 0 solid white;
+  transition: 0.3s ease-in-out;
+  width: 0;
+}
+
+
+.Chain{
+  display: flex;
+  align-items: center;
+  margin-right: 40px;
+}
+
+.Chain .bal{
+  margin:10px;
+}
+
+.Chain .bal p{
+  line-height: 4px;
+  font-size: 14px;
+}
+
+.Chain .bal .name{
+  font-size: 13px;
+  color: #8c8b8b;
+}
+
+.Chain .bal .amt{
+  font-weight: bold;
+}
+
+.Chain .bal .amt span{
+  font-size: 11px;
+  margin: 4px;
+  color: #7a7979;
+}
+
+.Chain img{
+  width: 35px;
+  height: 35px;
+}
+
+.ChainDetails{
+  display: flex;
+  align-items: center;
+  /* justify-content: space-around; */
+  flex-wrap: wrap;
+}
+
 

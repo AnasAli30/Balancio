@@ -1,7 +1,8 @@
 import React from 'react'
 import Profile from './Profile'
+import Btn from './Btn';
 
-export default function ProfileDetails({accDetails}) {
+export default function ProfileDetails({accDetails,handleWallet,web3state,buttn}) {
   let {selectedAccount,chainId,balance} = accDetails;
   function copy(e) {
     const textToCopy = e.target.innerText;
@@ -17,6 +18,7 @@ export default function ProfileDetails({accDetails}) {
   return (
     <div className="ProfileDetails">
     <Profile></Profile>
+    
     <div className="detail">
         <h3 className='id'>No ID</h3>
         <span className='address'>
