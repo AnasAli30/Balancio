@@ -298,3 +298,64 @@ cursor: pointer;
 }
 
 
+.tokenContainer{
+  /* border: 1px solid white; */
+  padding: 0.3rem;
+}
+
+.tokenContainer .TokenDetails{
+  /* border: 1px solid whitesmoke; */
+  background-color: #242424;
+  border-radius: 6px;
+  padding: 1px 0px;
+}
+
+.tokenContainer .wallet{
+  margin: 0.2rem 0rem;
+}
+.tokenContainer .wallet i{
+ margin-right: 0.5rem;
+}
+
+.tokenContainer .TokenDetails .table{
+    /* border: 1px solid whitesmoke; */
+  display: flex;
+  justify-content:space-between;
+  margin: 1rem;
+  padding: 0rem 0.9rem;
+  background-color:#2d2d2d;
+  border-radius: 6px;
+}
+.tokenContainer .TokenDetails .token{
+ margin-top: 0px;
+ margin-bottom: 0px;
+  background-color:#242424;
+
+}
+
+.tokenContainer .TokenDetails .token .name{
+  display: flex;
+  align-items: normal;
+}
+.tokenContainer .TokenDetails .token .name img{
+height: 25px;
+width: 25px;
+border-radius: 50%;
+margin-right: 4px;
+
+}
+.tokenContainer .TokenDetails .token-line{
+  /* border: 0.5px solid white; */
+  height: 1px;
+  background-color:#313131;
+  margin: 4px auto;
+width: 95%;
+
+}
+
+/* .Token{
+  display: flex;
+  justify-content:space-between;
+  padding: 0rem 1rem;
+  text-align: center;
+} */

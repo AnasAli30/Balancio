@@ -13,7 +13,7 @@ export default function ChainDetails({web3state}){
           try {
             const details = await getAccountBalace(web3state);
             setDetails(details); // Update state with fetched details
-            console.log(details);
+            // console.log(details);
           } catch (error) {
             console.error("Error fetching account details:", error);
           }

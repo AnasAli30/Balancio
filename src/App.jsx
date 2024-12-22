@@ -12,11 +12,14 @@ import MinorDetails from "./Component/MinorDetails"
 import MajorDetails from "./Component/MajorDetails"
 import Balance from './Component/Balance'
 import ChainDetails from "./Component/ChainDetails"
-
+import TokenDetails from "./Component/TokenDetails"
+import { getAccountBalace } from './utiles/getAccountBalace';
 
 
 function App() {
   const [count, setCount] = useState(0)
+  const [token, setToken] = useState([]);
+
   let [buttn,setbuttn] = useState("connect");
   const [web3state,setweb3state] = useState({
     contractInstance:null,
@@ -35,6 +38,13 @@ const handleWallet = async()=>{
         setbuttn("connecting");
       const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({contractInstance,selectedAccount,chainId,balance})
+        try{
+        let s = await getAccountBalace(selectedAccount);
+        setToken(s);
+        }catch(error){
+          console.log("error",error)
+        }
+     
         selectedAccount==undefined?setbuttn("connect again"):setbuttn("Disconnect");
       }
 
@@ -56,11 +66,9 @@ const handleWallet = async()=>{
     <MajorDetails></MajorDetails>
     
     <div className="line"></div>
-    {/* <div className="content"> */}
     <Balance></Balance>
-    {/* </div> */}
-    {/* <Btn className="btn" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn> */}
-<ChainDetails web3state={web3state}></ChainDetails>
+<div className="line"></div>
+<TokenDetails web3state={web3state} token={token}></TokenDetails>
     </div>
     </>
   )

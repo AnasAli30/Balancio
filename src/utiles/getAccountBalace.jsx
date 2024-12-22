@@ -1,48 +1,39 @@
 import React, { useEffect } from 'react'
 import process from 'process';
+import axios from "axios";
+import {ethers} from "ethers"
 window.process = process;
+import {getWalletTokenBalancesPrice} from "./moralisApi.js";
 
 
-export const getAccountBalace=async({selectedAccount})=> {
-
-    const base = process.env.REACT_APP_BASE;
-const bsc = process.env.REACT_APP_BSC;
-const eth = process.env.REACT_APP_ETH;
-const ape = process.env.REACT_APP_APE;
-console.log(selectedAccount,eth)
-    const url = `https://api.etherscan.io/api?module=account&action=tokentx&address=${selectedAccount}&startblock=0&endblock=99999999&sort=asc&apikey=${eth}`;
-  
+export const getAccountBalace=async(selectedAccount)=> {
+   
     try {
-      const response = await fetch(url);
-      const data = await response.json();
-  
-      if (data.status === "1" && data.result) {
-        // Parse and aggregate token balances
-        const tokens = {};
-        data.result.forEach((tx) => {
-          const token = tx.tokenSymbol;
-          const decimals = tx.tokenDecimal;
-          const value = parseInt(tx.value, 10) / 10 ** decimals;
-  
-          if (!tokens[token]) {
-            tokens[token] = { name: tx.tokenName, balance: 0, contract: tx.contractAddress };
-          }
-  
-          // Update balance
-          if (tx.to.toLowerCase() === walletAddress.toLowerCase()) {
-            tokens[token].balance += value;
-          } else if (tx.from.toLowerCase() === walletAddress.toLowerCase()) {
-            tokens[token].balance -= value;
-          }
-        });
-  
-        return Object.values(tokens).filter((token) => token.balance > 0); // Return tokens with positive balances
-      } else {
-        console.error("Error fetching token balances:", data.message);
-        return [];
-      }
+   
+     let filtertrx = await getWalletTokenBalancesPrice(selectedAccount);
+      const filteredData = filtertrx
+      .map((pro) => {
+        if (pro.security_score>80) {
+          let num = Number(pro.usd_price);
+return {
+  contractAddress: pro.token_address,
+  tokenName: pro?.name,
+  tokenSymbol: pro?.symbol,
+  price: num,
+  img: pro?.logo,
+  amount: parseFloat(Number(ethers.formatUnits(pro.balance)).toPrecision(1)),
+  PercentChange: pro?.['24hrPercentChange']
+};
+
+        }
+        return null; 
+      })
+      .filter(Boolean); 
+    
+      return filteredData;
+
     } catch (error) {
       console.error("Error fetching token balances:", error);
-      return [];
+      return null;
     }
   }; 
