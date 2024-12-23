@@ -1,10 +1,17 @@
-import React from 'react'
+import React from 'react';
 
-export default function Token({img,sym,price,amount,usd}) {
+// import innerimg from "../icon/base.png";
+
+export default function Token({img,sym,price,amount,usd,innerimg}) {
   return (
     <>
         <div className="name">
+            <div className="img">
             <img src={img} alt="" />
+            <div className="innerimg">
+                <img src={innerimg} alt="" />
+            </div>
+            </div> 
             <span>{sym}</span>
         </div>
         <div className="price">

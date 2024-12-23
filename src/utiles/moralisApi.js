@@ -1,11 +1,22 @@
 import Moralis from 'moralis';
 
-// Fetch prices for multiple ERC20 tokens
-export const getWalletTokenBalancesPrice = async (address, chain = "0x2105") => {
+
+
+export const initializeMoralis= async()=>{
+try{
+  await Moralis.start({ apiKey: "" });
+}catch(error){
+  console.log(error);
+}
+}
+
+
+
+export const getWalletTokenBalancesPrice = async (address, chain) => {
   try {
-    await Moralis.start({ apiKey: "" });
+
     const response = await Moralis.EvmApi.wallets.getWalletTokenBalancesPrice({
-      "chain": "0x2105",
+      "chain": chain,
       "address": address
     });
     console.log(response.raw())

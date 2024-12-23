@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
@@ -14,11 +14,24 @@ import Balance from './Component/Balance'
 import ChainDetails from "./Component/ChainDetails"
 import TokenDetails from "./Component/TokenDetails"
 import { getAccountBalace } from './utiles/getAccountBalace';
+import { initializeMoralis} from "./utiles/moralisApi.js";
 
 
 function App() {
   const [count, setCount] = useState(0)
   const [token, setToken] = useState([]);
+  const [Alltoken, setAllToken] = useState([]);
+  let flag = useRef(true)
+  useEffect(()=>{
+    async function fetch() {
+      await initializeMoralis();
+      console.log("Initiazed")
+    }
+    if(flag){
+    fetch()
+    flag=false;
+  }
+  },[])
 
   let [buttn,setbuttn] = useState("connect");
   const [web3state,setweb3state] = useState({
@@ -39,8 +52,9 @@ const handleWallet = async()=>{
       const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({contractInstance,selectedAccount,chainId,balance})
         try{
-        let s = await getAccountBalace(selectedAccount);
-        setToken(s);
+        let {FilterData,AllData} = await getAccountBalace(selectedAccount);
+        setToken(FilterData);
+        setAllToken(AllData);
         }catch(error){
           console.log("error",error)
         }
@@ -67,6 +81,7 @@ const handleWallet = async()=>{
     
     <div className="line"></div>
     <Balance></Balance>
+    <ChainDetails Alltoken={Alltoken}></ChainDetails>
 <div className="line"></div>
 <TokenDetails web3state={web3state} token={token}></TokenDetails>
     </div>

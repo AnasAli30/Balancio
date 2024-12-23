@@ -1,0 +1,9 @@
+[
+    { "name": "Ethereum", "chainId": "0x1" },
+    { "name": "Binance", "chainId": "0x38" },
+    { "name": "Polygon", "chainId": "0x89" },
+    { "name": "Base", "chainId": "0x2105" },
+    { "name": "Arbitrum", "chainId": "0xa4b1" },
+    { "name": "Optimism", "chainId": "0xa" },
+    { "name": "linea", "chainId": "0xe705" }
+  ]
