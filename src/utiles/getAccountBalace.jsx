@@ -63,8 +63,16 @@ totalamt = totalamt+ pro.usd_value
       
       }).flat()
       .sort((a, b) => parseFloat(b.value) - parseFloat(a.value))
-    
-      return {FilterData:FilterData,AllData:AllData};
+
+      function totalBalance(){
+      let total=0;
+      AllData.map((pro)=>{
+        total =total + Number(pro.value);
+      })
+      return total;
+      }
+      
+      return {FilterData:FilterData,AllData:AllData,total:totalBalance()};
 
     } catch (error) {
       console.error("Error fetching token balances:", error);

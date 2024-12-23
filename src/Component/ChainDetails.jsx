@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Chain from './Chain'
 
-export default function ChainDetails({Alltoken}){
+export default function ChainDetails({Alltoken,totalBalance}){
   let chainLogos = {
     Ethereum: "https://static.cdnlogo.com/logos/e/81/ethereum-eth.svg", 
     Base: "https://avatars.githubusercontent.com/u/108554348?v=4",
@@ -16,7 +16,7 @@ export default function ChainDetails({Alltoken}){
     <div className="ChainDetails">
     {/* <Chain name={details?.name} amt={details?.usdValue}></Chain> */}
    {Alltoken?.map((pro)=>{
-    return <Chain name={pro.name} amt={pro.value} img={chainLogos[pro.name]}></Chain>
+    return <Chain name={pro.name} amt={pro.value} img={chainLogos[pro.name]} percent={((Number(pro.value)/totalBalance)*100).toFixed(1)}></Chain>
    })}
     </div>
 

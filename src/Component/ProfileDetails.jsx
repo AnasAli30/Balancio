@@ -2,7 +2,7 @@ import React from 'react'
 import Profile from './Profile'
 import Btn from './Btn';
 
-export default function ProfileDetails({accDetails,handleWallet,web3state,buttn}) {
+export default function ProfileDetails({accDetails,totalBalance}) {
   let {selectedAccount,chainId,balance} = accDetails;
   function copy(e) {
     const textToCopy = e.target.innerText;

@@ -21,6 +21,7 @@ function App() {
   const [count, setCount] = useState(0)
   const [token, setToken] = useState([]);
   const [Alltoken, setAllToken] = useState([]);
+  const [totalBalance,setTotalBalace] = useState(0);
   let flag = useRef(true)
   useEffect(()=>{
     async function fetch() {
@@ -52,9 +53,10 @@ const handleWallet = async()=>{
       const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({contractInstance,selectedAccount,chainId,balance})
         try{
-        let {FilterData,AllData} = await getAccountBalace(selectedAccount);
+        let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);
         setToken(FilterData);
         setAllToken(AllData);
+        setTotalBalace(total);
         }catch(error){
           console.log("error",error)
         }
@@ -81,8 +83,7 @@ const handleWallet = async()=>{
     
     <div className="line"></div>
     <Balance></Balance>
-    <ChainDetails Alltoken={Alltoken}></ChainDetails>
-<div className="line"></div>
+    <ChainDetails Alltoken={Alltoken} totalBalance={totalBalance}></ChainDetails>
 <TokenDetails web3state={web3state} token={token}></TokenDetails>
     </div>
     </>

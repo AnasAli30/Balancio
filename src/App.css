@@ -258,7 +258,7 @@ cursor: pointer;
 .Chain{
   display: flex;
   align-items: center;
-  margin-right: 40px;
+  margin:0px 10px;
 }
 
 .Chain .bal{
@@ -277,11 +277,12 @@ cursor: pointer;
 
 .Chain .bal .amt{
   font-weight: bold;
+  color: #cccbcb;
 }
 
 .Chain .bal .amt span{
-  font-size: 11px;
-  margin: 4px;
+  font-size: 10px;
+  margin: 3px;
   color: #7a7979;
 }
 
@@ -294,7 +295,7 @@ cursor: pointer;
 .ChainDetails{
   display: flex;
   align-items: center;
-  /* justify-content: space-around; */
+  justify-content: space-around;
   flex-wrap: wrap;
 }
 
