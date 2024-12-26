@@ -28,7 +28,6 @@ export const getAccountBalace=async(selectedAccount)=> {
        return name.trx.map((pro)=>{
         let amt = parseFloat(Number(ethers.formatUnits(pro.balance)).toPrecision(1))
           if (pro.security_score>80&& amt>0) {
-            // console.log()
             let num = Number(pro.usd_price);
   return {
     chain_name:name.name,
@@ -71,7 +70,7 @@ totalamt = totalamt+ pro.usd_value
       })
       return total;
       }
-      
+
       return {FilterData:FilterData,AllData:AllData,total:totalBalance()};
 
     } catch (error) {

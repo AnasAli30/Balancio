@@ -1,9 +1,5 @@
 import { useEffect, useRef, useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
 import './App.css'
-import Content from './Component/Content'
-import Web3Provider from './context/web3Provider'
 import Btn from './Component/Btn'
 import { getWeb3State } from './utiles/getWeb3State'
 import Search from './Component/Search'
@@ -13,8 +9,10 @@ import MajorDetails from "./Component/MajorDetails"
 import Balance from './Component/Balance'
 import ChainDetails from "./Component/ChainDetails"
 import TokenDetails from "./Component/TokenDetails"
+import Loadingchain from "./Component/Loadingchain.jsx"
 import { getAccountBalace } from './utiles/getAccountBalace';
 import { initializeMoralis} from "./utiles/moralisApi.js";
+
 
 
 function App() {
@@ -22,6 +20,7 @@ function App() {
   const [token, setToken] = useState([]);
   const [Alltoken, setAllToken] = useState([]);
   const [totalBalance,setTotalBalace] = useState(0);
+  const[Loading,setLoading] = useState(false);
   let flag = useRef(true)
   useEffect(()=>{
     async function fetch() {
@@ -53,7 +52,9 @@ const handleWallet = async()=>{
       const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({contractInstance,selectedAccount,chainId,balance})
         try{
+        setLoading(true);
         let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);
+        setLoading(false);
         setToken(FilterData);
         setAllToken(AllData);
         setTotalBalace(total);
@@ -83,8 +84,15 @@ const handleWallet = async()=>{
     
     <div className="line"></div>
     <Balance></Balance>
-    <ChainDetails Alltoken={Alltoken} totalBalance={totalBalance}></ChainDetails>
-<TokenDetails web3state={web3state} token={token}></TokenDetails>
+    {web3state.selectedAccount!=undefined?<>
+    {!Loading?<><ChainDetails Alltoken={Alltoken} totalBalance={totalBalance}></ChainDetails></>:<><Loadingchain></Loadingchain></>}
+
+{!Loading?<TokenDetails web3state={web3state} token={token}></TokenDetails>:<></>}</>
+
+:<>Connect Wallet</>
+
+}
+    
     </div>
     </>
   )

@@ -14,10 +14,9 @@ export default function ChainDetails({Alltoken,totalBalance}){
   
   return (
     <div className="ChainDetails">
-    {/* <Chain name={details?.name} amt={details?.usdValue}></Chain> */}
-   {Alltoken?.map((pro)=>{
+   {Alltoken? Alltoken.map((pro)=>{
     return <Chain name={pro.name} amt={pro.value} img={chainLogos[pro.name]} percent={((Number(pro.value)/totalBalance)*100).toFixed(1)}></Chain>
-   })}
+   }):"<div>Not Found</div>"}
     </div>
 
   )

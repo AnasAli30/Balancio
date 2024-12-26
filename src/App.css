@@ -261,8 +261,17 @@ cursor: pointer;
   margin:0px 10px;
 }
 
+.loadChain{
+  display: flex;
+  align-items: center;
+  margin:0px 10px;
+}
+
 .Chain .bal{
   margin:10px;
+}
+.loadChain .bal{
+  margin:14px;
 }
 
 .Chain .bal p{
@@ -270,7 +279,21 @@ cursor: pointer;
   font-size: 14px;
 }
 
+.loadChain .bal p{
+  line-height: 4px;
+  font-size: 14px;
+}
+
+
 .Chain .bal .name{
+  font-size: 13px;
+  color: #8c8b8b;
+}
+
+.loadChain .bal .name{
+  width: 30px;
+  background-color: #6a6a6a;
+  height: 10px;
   font-size: 13px;
   color: #8c8b8b;
 }
@@ -280,13 +303,38 @@ cursor: pointer;
   color: #cccbcb;
 }
 
+.loadChain .bal .amt{
+  width: 50px;
+  background-color: #6a6a6a;
+  height: 15px;
+  font-weight: bold;
+  color: #cccbcb;
+  margin-right: 10px;
+}
+
 .Chain .bal .amt span{
   font-size: 10px;
   margin: 3px;
   color: #7a7979;
 }
 
+.loadChain .bal span{
+  border: 1px solid white;
+  width: 3px;
+  height: 1px;
+  background-color: #6a6a6a;;
+  font-size: 10px;
+  margin: 3px;
+  color: #7a7979;
+}
+
 .Chain img{
+  width: 35px;
+  height: 35px;
+  border-radius: 50%
+}
+.loadChain img{
+  background-color: #6a6a6a;
   width: 35px;
   height: 35px;
   border-radius: 50%
