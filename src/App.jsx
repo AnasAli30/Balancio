@@ -1,38 +1,18 @@
+
+import { Outlet } from 'react-router'
+import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import './App.css'
-import Btn from './Component/Btn'
 import { getWeb3State } from './utiles/getWeb3State'
-import Search from './Component/Search'
-import ProfileDetails from './Component/ProfileDetails'
-import MinorDetails from "./Component/MinorDetails"
-import MajorDetails from "./Component/MajorDetails"
-import Balance from './Component/Balance'
-import ChainDetails from "./Component/ChainDetails"
-import TokenDetails from "./Component/TokenDetails"
-import Loadingchain from "./Component/Loadingchain.jsx"
-import { getAccountBalace } from './utiles/getAccountBalace';
-import { initializeMoralis} from "./utiles/moralisApi.js";
-
+import {getAccountBalace} from "./utiles/getAccountBalace"
+import Nav from './Component/Nav'
 
 
 function App() {
-  const [count, setCount] = useState(0)
-  const [token, setToken] = useState([]);
-  const [Alltoken, setAllToken] = useState([]);
-  const [totalBalance,setTotalBalace] = useState(0);
-  const[Loading,setLoading] = useState(false);
-  let flag = useRef(true)
-  useEffect(()=>{
-    async function fetch() {
-      await initializeMoralis();
-      console.log("Initiazed")
-    }
-    if(flag){
-    fetch()
-    flag=false;
-  }
-  },[])
-
+    const [token, setToken] = useState([]);
+      const [Alltoken, setAllToken] = useState([]);
+      const [totalBalance,setTotalBalace] = useState(0);
+      const[Loading,setLoading] = useState(false);
   let [buttn,setbuttn] = useState("connect");
   const [web3state,setweb3state] = useState({
     contractInstance:null,
@@ -41,58 +21,41 @@ function App() {
     balance:null
 })
 const handleWallet = async()=>{
-    try{
-      
-      console.log(buttn)
-      if(buttn=="Disconnect"){
-        setweb3state({undefined})
-        setbuttn("connect again");
-      }else{
-        setbuttn("connecting");
-      const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
-        setweb3state({contractInstance,selectedAccount,chainId,balance})
-        try{
-        setLoading(true);
-        let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);
-        setLoading(false);
-        setToken(FilterData);
-        setAllToken(AllData);
-        setTotalBalace(total);
-        }catch(error){
-          console.log("error",error)
-        }
-     
-        selectedAccount==undefined?setbuttn("connect again"):setbuttn("Disconnect");
-      }
-
-      
-    }catch(error){
-        console.error(error)
-    }
+  try{
     
+    console.log(buttn)
+    if(buttn=="Disconnect"){
+      setweb3state({undefined})
+      setbuttn("connect again");
+    }else{
+      setbuttn("connecting");
+    const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
+      setweb3state({contractInstance,selectedAccount,chainId,balance})
+      try{
+      setLoading(true);
+      let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);
+      setLoading(false);
+      setToken(FilterData);
+      setAllToken(AllData);
+      setTotalBalace(total);
+      }catch(error){
+        console.log("error",error)
+      }
+   
+      selectedAccount==undefined?setbuttn("connect again"):setbuttn("Disconnect");
+    }
+
+    
+  }catch(error){
+      console.error(error)
+  }
+  
 }
   return (
     <>
     <div className="Container">
-    <div className="nav">
-    <Btn className="follow" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn>
-       <Search></Search>
-    </div>
-    <ProfileDetails accDetails={web3state} handleWallet={handleWallet} web3state={web3state} btn={buttn}></ProfileDetails>
-    <MinorDetails></MinorDetails>
-    <MajorDetails></MajorDetails>
-    
-    <div className="line"></div>
-    <Balance></Balance>
-    {web3state.selectedAccount!=undefined?<>
-    {!Loading?<><ChainDetails Alltoken={Alltoken} totalBalance={totalBalance}></ChainDetails></>:<><Loadingchain></Loadingchain></>}
-
-{!Loading?<TokenDetails web3state={web3state} token={token}></TokenDetails>:<></>}</>
-
-:<>Connect Wallet</>
-
-}
-    
+     <Nav handleWallet={handleWallet} web3state={web3state} buttn={buttn}></Nav>
+    <Outlet context={[handleWallet,web3state,buttn,Loading,Alltoken,totalBalance,token]}/>
     </div>
     </>
   )

@@ -1,6 +1,7 @@
 import {ethers} from "ethers"
 import abi from "../constant/abi.json"
 import { JsonRpcProvider ,BrowserProvider} from "ethers";
+
 export const getWeb3State = async()=>{
     try{
         //metamask installation check
