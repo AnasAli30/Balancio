@@ -19,7 +19,7 @@ export default function Nav({handleWallet,web3state,buttn}) {
         <MinorDetails></MinorDetails>
         <MajorDetails></MajorDetails> 
         <div className="line"></div>
-        <Balance></Balance>
+        <Balance web3state={web3state}></Balance>
     </>
   )
 }

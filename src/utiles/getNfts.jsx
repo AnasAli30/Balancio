@@ -1,13 +1,15 @@
 import React from 'react'
 import axios from "axios"
 
-export const getNfts=async({address})=>{
+export const getNfts=async(address)=>{
 
   const fetch=async(chain)=>
     {
       let uri = `https://${chain}.mintify.xyz/api/getOwnerWallet?owner=${address}&ownerAltAddress&limit=500&page=1&sort=time-desc`;
       const {data} = await axios
       .get(uri);
+      // console.log(data)
+      // if(data)
       const Data = data.data.filter((pro)=>{
         return pro.image && !pro.is_flagged
       })
@@ -35,9 +37,20 @@ export const getNfts=async({address})=>{
       return {nftData,Data};
   }
 
- const base =await fetch('base');
- const eth = await fetch('trade');
-
- let arr = {nftData:[...base.nftData,...eth.nftData],Data:[...base.Data,...eth.Data].sort((a,b)=>b.topOffer - a.topOffer)}
+ const base =await fetch('base')
+ .catch(()=>{
+  return {
+    nftData:[],
+    Data:[]
+  };
+ })
+ const eth = await fetch('trade')
+ .catch((e)=>{
+  return {
+    nftData:[],
+    Data:[]
+  }
+ })
+ let arr = {nftData:[...base.nftData,...eth?.nftData],Data:[...base.Data,...eth?.Data].sort((a,b)=>b.topOffer - a.topOffer)}
 return arr;
 }

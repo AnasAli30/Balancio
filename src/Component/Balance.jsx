@@ -1,13 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router'
 
-export default function Balance() {
+export default function Balance({web3state}) {
+  console.log(web3state)
   return (
     <div className="Balance">
       <Link className='link'  to={'/'}>
         <div className="Portfolio box">Portfolio <div className="underline"></div></div>
         </Link>
-        <Link className='link' to={'/nft'}>
+        <Link className='link' to={'/nft'} state={{address:web3state.selectedAccount}}>
         <div className="Nft box">Nft <div className="underline"></div></div>
         </Link>
         <Link className='link' to={'/trx'}>
