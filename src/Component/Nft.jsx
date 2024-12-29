@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function Nft({img,name,collectname,rare,chain}) {
+export default function Nft({img,name,collectname,rare,chain,click}) {
   let chainLogos = {
     eth: "https://static.cdnlogo.com/logos/e/81/ethereum-eth.svg", 
     base: "https://avatars.githubusercontent.com/u/108554348?v=4",
@@ -20,7 +20,7 @@ export default function Nft({img,name,collectname,rare,chain}) {
                 # {rare}
             </div>:""}
         </div>
-        <div className="icon">
+        <div className="icon" onClick={click}>
         <i class="fa-solid fa-ellipsis"></i>
         </div>
     </div>

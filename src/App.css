@@ -555,7 +555,7 @@ width: 95%;
 
 .nft .text .nftname {
   width: 70%; 
-  line-height: 14px;
+  line-height: 16px;
 }
 
 .nft .text .nftname p{
@@ -578,10 +578,282 @@ width: 95%;
   color:#c5c5c5
 }
 
+.nft .icon:hover{
+  background-color: #272727;
+}
+
 .nftbox{
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-around;
   /* border: 1px solid white; */
+}
+
+.Context{
+  /* border: 1px solid white; */
+  position: absolute;
+  /* width: 100px; */
+  /* text-align: center; */
+  border-radius: 10px 10px 10px 0px;
+  overflow: hidden;
+  background-color: #2a2a2afe;
+  z-index: 1;
+  transition: 0.3s ease-in-out;
+}
+
+.Context .child{
+  font-size: 13px;
+  margin: 10px;
+  cursor: pointer;
+  border-radius: 10px;
+  padding: 10px;
+  transition: 0.2s ease-in-out;
+  /* width: 100px; */
+
+}
+
+.Context .child i{
+  margin-right: 10px;
+}
+
+.Context .child:hover{
+  scale: 1.05;
+  background-color: #373737;
+
+}
+
+#popup {
+  position: fixed;
+  /* display:flex; */
+  top: 0;
+  left: 0px;
+  width: 100%;
+  /* margin: 0 auto; */
+  height: 100%;
+  /* border: 1px solid rgb(48, 46, 42); */
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center; /* Center horizontally */
+  align-items: center; /* Center vertically */
+  z-index: 100;
+}
+
+.ListNft {
+  position: relative;
+  top: -5%;
+  width: 50%;
+  max-width: 600px;
+  padding: 20px;
+  background-color: #232222;
+  color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.listnav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.listnav h3 {
+  margin: 0;
+  color: white;
+}
+
+.close-icon {
+  font-size: 20px;
+  cursor: pointer;
+  color: white;
+}
+
+
+.ListNft .content{
+  display: flex;
+  align-items: center;
+  /* justify-content: sp; */
+  height: 20px;
+  margin: 35px 20px;
+}
+.ListNft .content .listing{
+  width: 40%;
+  line-height: 10px;
+  text-align: end;
+}
+
+.ListNft .content .listing p{
+ font-size: 10px;
+ color: #a8a7a7;
+}
+.ListNft .content .listing .eth{
+ font-size: 13px;
+ font-weight: bold;
+}
+.ListNft .content img{
+  width: 60px;
+  border-radius: 10px;
+}
+
+.listprice{
+  display: flex;
+  flex-direction: column;
+}
+
+.listprice .p{
+  margin: 10px 0px;
+  font-size: 14px;
+}
+
+.listprice .trait{
+  margin: 10px;
+  /* background-color:; */
+  border: none;
+  padding: 10px;
+  border-radius: 10px;
+  width: 60%;
+  /* margin: 0 auto; */
+  background-color: #3a3a3ab8;
+  color: white;
+  cursor: pointer;
+}
+
+.listprice .button{
+  display: flex;
+  justify-content: space-around;
+}
+
+.content .listname p{
+  margin: 0;
+  line-height: 20px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  font-size: 15px;
+  text-align: left;
+  /* color: #000000; */
+}
+.content .listname {
+  margin-left: 10px;
+  width: 60%;
+}
+
+.listprice .trait span{
+  font-weight: bold;
+ 
+}
+
+.listprice .input{
+  height: 35px;
+  border-radius: 10px;
+  border: 1px solid rgb(147, 146, 146);
+  display: flex;
+  align-items: center;
+  overflow: hidden;
+
+}
+
+.listprice .input .inputeth{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  margin-left: 10px;
+}
+
+.listprice .input input{
+  color: white;
+  padding: 10px;
+  background-color: inherit;
+  border: 0px 1px;
+  outline: none;
+width: 70%;
+}
+
+.listprice .fee{
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  height: 35px;
+}
+
+.listprice .earning{
+  display: flex;
+  justify-content: space-between;
+  height: 35px;
+  font-size: 15px;
+}
+
+.ListNft .complete{
+  width: 100%;
+  margin-top: 20px;
+  /* padding: 0px; */
+  /* border: 1px solid white; */
+}
+
+.ListNft .complete .listt{
+  width: 100%;
+  height: 35px;
+  border: none;
+  border-radius: 10px;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  
+}
+#popup form{
+  width: 100%;
+}
+
+#popup .MenuTransfer{
+  background-color: #232222;
+  /* width: 50%; */
+  padding: 0px 20px 20px 20px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+#popup .MenuTransfer img{
+width: 150px;
+border-radius: 10px;
+}
+
+#popup .MenuTransfer p{
+  font-size: 13px;
+  /* margin: 0; */
+  margin: 20px 0px 5px 0px;
+  text-align:left;
+  width: 100%;
+}
+
+#popup .MenuTransfer .transnav{
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+}
+
+#popup .MenuTransfer .input input{
+  width: 330px;
+  height: 30px;
+  border-radius: 10px;
+  outline: none;
+  background-color: inherit;
+  border: 1px solid rgb(95, 95, 95);
+ padding: 3px 10px;
+ color: white;
+}
+
+#popup .MenuTransfer .listt{
+  width: 100%;
+  border: none;
+  color: white;
+  padding: 10px;
+  margin-top: 20px;
+  border-radius: 10px;
 }

@@ -1,6 +1,6 @@
 import React from 'react'
 
-export default function NftSearch() {
+export default function NftSearch({search}) {
   return (
     <>
     <div className="nftsearch">
@@ -9,7 +9,7 @@ export default function NftSearch() {
         </div>
         <div className="search">
         <i class="fa-solid fa-magnifying-glass"></i>
-            <input type="text" placeholder='Search by name' />
+            <input type="text" placeholder='Search by name' onChange={search} />
         </div>
         <div className="sort box">
         <i class="fa-solid fa-sort"></i>

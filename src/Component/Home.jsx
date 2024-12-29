@@ -1,12 +1,6 @@
 import React from 'react'
 import { useEffect, useRef, useState } from 'react'
 import '../App.css'
-import Btn from './Btn'
-import Search from './Search'
-import ProfileDetails from './ProfileDetails'
-import MinorDetails from "./MinorDetails"
-import MajorDetails from "./MajorDetails"
-import Balance from './Balance'
 import ChainDetails from "./ChainDetails"
 import TokenDetails from "./TokenDetails"
 import Loadingchain from "./Loadingchain.jsx"
@@ -17,6 +11,7 @@ import { useOutletContext } from 'react-router'
 
 
 export default function Home() {
+ 
     let flag = useRef(true)
     useEffect(()=>{
       async function fetch() {

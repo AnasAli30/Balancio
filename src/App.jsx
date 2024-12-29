@@ -15,7 +15,7 @@ function App() {
       const[Loading,setLoading] = useState(false);
   let [buttn,setbuttn] = useState("connect");
   const [web3state,setweb3state] = useState({
-    contractInstance:null,
+    signer:null,
     selectedAccount:null,
     chainId:null,
     balance:null
@@ -29,8 +29,8 @@ const handleWallet = async()=>{
       setbuttn("connect again");
     }else{
       setbuttn("connecting");
-    const {contractInstance,selectedAccount,chainId,balance} = await getWeb3State();
-      setweb3state({contractInstance,selectedAccount,chainId,balance})
+    const {signer,selectedAccount,chainId,balance} = await getWeb3State();
+      setweb3state({signer,selectedAccount,chainId,balance})
       try{
       setLoading(true);
       let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);

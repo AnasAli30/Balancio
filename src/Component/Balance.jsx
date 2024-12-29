@@ -8,7 +8,7 @@ export default function Balance({web3state}) {
       <Link className='link'  to={'/'}>
         <div className="Portfolio box">Portfolio <div className="underline"></div></div>
         </Link>
-        <Link className='link' to={'/nft'} state={{address:web3state.selectedAccount}}>
+        <Link className='link' to={'/nft'} state={{address:web3state.selectedAccount,signer:web3state.signer}}>
         <div className="Nft box">Nft <div className="underline"></div></div>
         </Link>
         <Link className='link' to={'/trx'}>
