@@ -9,11 +9,12 @@ export default function NftBox({Data,state}) {
       let [nftData,setnftData] = useState({});
     let [position ,setPosition] = useState({})
     let [nftdetail,Setnftdetail] = useState({})
-    // const click=
+    console.log(nftdetail)
   return (
     <>
    {isTransOpen?<MenuTransfer data={nftData} SetisTransOpen={SetisTransOpen} state={state}></MenuTransfer>:null}
      {isOpen?<LiftNft data={nftData} setisOpen={setisOpen} state={state}></LiftNft>:""}
+
     <ContextMenu position={position} setnftData={setnftData} nftdetail={nftdetail} setisOpen={setisOpen} SetisTransOpen={SetisTransOpen} ></ContextMenu>
     {/* <div className='total'>123</div> */}
 
@@ -21,11 +22,10 @@ export default function NftBox({Data,state}) {
      {Data?.map((pro)=>{
          return <Nft name={pro.name} img={pro.image} collectname={pro.contractName} rare={pro.rank} chain={pro.chain} click={(e)=>{
             if(!position.left){
-            setPosition({left:e.clientX+10 , top:e.pageY-120})}else{
+            setPosition({left:e.clientX-30 , top:e.pageY-630})}else{
                 setPosition({})
             }
             Setnftdetail(pro)
-            console.log(pro)
         }}/>
       })}
       </div>

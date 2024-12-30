@@ -5,7 +5,7 @@ import { Seaport } from '@opensea/seaport-js';
 
 export const listNft = async(ca,tokenid,signer,floor,fee_data,chain)=>{
 const zone = import.meta.env.VITE_ZONE;
-const conduitKey = import.meta.env.VITE_ZONE; // Conduit key
+const conduitKey = import.meta.env.VITE_CONDUITKEY; // Conduit key
 const salt = ethers.id(import.meta.env.VITE_SALT);
     try{
         const seaport = new Seaport(signer);
@@ -112,7 +112,6 @@ const salt = ethers.id(import.meta.env.VITE_SALT);
                 conduitKey: conduitKey,
             });
         }
-            // Create the listing
             
             const order = await executeAllActions();
             order['protocol_address'] = '0x0000000000000068f116a894984e2db1123eb395'
@@ -121,7 +120,7 @@ const salt = ethers.id(import.meta.env.VITE_SALT);
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
-                    'x-api-key': import.meta.env.VITE_OPENSEA, // Replace with your OpenSea API key
+                    'x-api-key': import.meta.env.VITE_OPENSEA, 
                 },
                 body: JSON.stringify(order),
             });

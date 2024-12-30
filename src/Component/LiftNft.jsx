@@ -5,6 +5,7 @@ import {listNft} from "../opensea/constants"
 
 export default function LiftNft({setisOpen,data,state}) {
     console.log(state)
+    console.log(data)
     let [amount,SetAmount] = useState("");
     let [disable,SetDisable] = useState({backgroundColor:"rgba(146, 123, 251, 0.51)",color:"rgba(232, 232, 235, 0.82)"})
     let [current,Setcurrent] = useState({ backgroundColor: "rgb(123, 123, 251)"})

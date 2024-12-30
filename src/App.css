@@ -226,13 +226,17 @@ cursor: pointer;
 }  
 
 .Balance{
+  position: sticky;
+  top: 0;
   margin-top: 10px;
   /* border: 1px solid white; */
   display: flex;
-  position: relative;
+  /* position: relative; */
   justify-content: space-around;
   align-items: center;
   height: 50px;
+  z-index: 2;
+  background-color: #121212;
 }
 
 .Balance .box{
@@ -444,16 +448,23 @@ width: 95%;
 
 
 .nftsearch{
+  /* width: 10px; */
+  /* height: 40px; */
+  position: sticky;
+  padding-bottom: 10px;
+  top: 50px;
   margin-top: 10px;
   display: flex;
   justify-content: space-around;
   align-items: center;
+  z-index: 1;
+  background-color: #121212;
 }
 
 .nftsearch .search{
   border: 1px solid rgb(145, 145, 145);
   width: 70%;
-  height: 100%;
+  height: 110%;
   display: flex;
   align-items: center;
   justify-content: space-around;
@@ -856,4 +867,165 @@ border-radius: 10px;
   padding: 10px;
   margin-top: 20px;
   border-radius: 10px;
+}
+
+
+.innerBox{
+  position: relative;
+  display: flex;
+  /* justify-content: space-evenly; */
+}
+
+.Collections{
+  position: sticky;
+  top: 100px; /* Distance from the top of the viewport */
+  /* border: 1px solid white; */
+  margin-top: 20px;
+  padding: 20px;
+  height: 79vh; /* Adjust height to fit your layout */
+  display: flex;
+  flex-direction: column;
+}
+
+.Collections .realCollections {
+  width: 102%;
+  padding-right: 20px;
+  flex-grow: 1; 
+  overflow-y:auto;
+  margin-top: 10px; 
+  scroll-behavior: smooth;
+}
+
+.realCollections::-webkit-scrollbar {
+  width: 10px; /* Adjust scrollbar width */
+}
+
+.realCollections::-webkit-scrollbar-track {
+  background: linear-gradient(180deg, #5c5c5c, #383838); /* Subtle gradient */
+  border-radius: 10px; /* Rounded edges */
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1); /* Inner shadow */
+}
+
+.realCollections::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #5b5a5a, #5d5d5d); /* Vibrant gradient */
+  border-radius: 10px; /* Rounded edges */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2); /* Drop shadow for thumb */
+  border: 2px solid #f1f1f1; /* Optional border for contrast */
+}
+
+.realCollections::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, #4d2793, #646464); /* Change gradient on hover */
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.3); /* Stronger shadow on hover */
+}
+
+.Collections .innercollection{
+  display: flex;
+  align-items: center;
+}
+
+.Collections .innercollection i{
+  margin-left: 150px;
+
+}
+
+
+.Collections .search{
+  border: 1px solid rgb(145, 145, 145);
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  border-radius: 10px;
+  padding: 2px;
+  margin-top: 20px;
+}
+
+.Collections .search input{
+  width: 90%;
+  height: 30px;
+  padding-left: 10px;
+  background-color: #121212;
+  color: white;
+  border: none;
+  outline: none;
+}
+
+.Collections .search i{
+  margin-left: 5px;
+}
+
+.realCollections .innerreal{
+  display: flex;
+  font-size: 11px;
+  color: #adadad;
+  margin: 10px 0px;
+  justify-content: space-between;
+  font-weight: bold;
+}
+
+
+
+.Collections .minicollect{
+  /* border: 1px solid white; */
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin: 10px 0px;
+}
+.Collections .minicollect .mini1{
+  display: flex;
+  align-items:center;
+  /* overflow: hidden; */
+}
+
+.Collections .minicollect .mini1 .img{
+  display: flex;
+  overflow:hidden;
+  border-radius: 10px;
+  margin-right: 9px;
+
+}
+
+.Collections .minicollect .mini1 .names {
+  width: 60%;
+}
+
+.Collections .minicollect .mini1 .names p{
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.Collections .minicollect .mini1 .names p:nth-child(2)
+{
+  margin-top: 0;
+font-size: 10px;
+color: #797979;
+}
+.Collections .minicollect .mini1 .names p:nth-child(1)
+{
+  margin: 10px 0px 1px 0px;
+}
+
+
+.Collections .minicollect .mini1 img{
+  width: 50px;
+
+  /* overflow: hidden; */
+}
+
+.Collections .minicollect .ethprice{
+  text-align: end;
+}
+
+.Collections .minicollect .ethprice p{
+  text-align: end;
+  margin: 0;
+}
+.Collections .minicollect .ethprice p:nth-child(2){
+  font-size: 11px;
+}
+.Collections .minicollect .ethprice p:nth-child(2) span{
+  /* font-size: 11px; */
+  color: #828282;
 }

@@ -4,9 +4,12 @@ import { useLocation } from 'react-router'
 import NftSearch from './NftSearch';
 import NftBox from "./NftBox"
 import LiftNft from './LiftNft';
+import Collections from "./Collections"
+import { use } from 'react';
 
 export default function NftSection() {
   let [nft,setNft] = useState([]);
+  let[show,setShow] =useState(false);
 
   let [filternft,setFilternft] = useState();
   let {state} = useLocation();
@@ -34,8 +37,11 @@ export default function NftSection() {
   return (
     <>
    
-        <NftSearch search={search}/>
+        <NftSearch search={search} setShow={setShow} show={show}/>
+        <div className="innerBox">
+       {show?<Collections Data={nft}></Collections>:null}
         <NftBox Data={filternft} state={state}></NftBox>
+        </div>
     </>
 
 
