@@ -1,0 +1,74 @@
+.transection table {
+    width: 100%;
+   
+    /* text-align: center; */
+}
+
+.transection .tablerow{
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.transection .tablerow .first{
+    width: 30%;
+}
+.transection .tablerow .first .time{
+    color: rgb(203, 203, 203);
+}
+
+
+.transection .tablerow .first .add{
+    display: flex;
+    align-items: center;
+    color: rgb(170, 170, 170);
+    font-size: 14px;
+}
+
+.transection .tablerow .first .add img{
+    width: 19px;
+    height: 19px;
+    margin-right: 3px;
+    border-radius: 50%;
+   
+}
+
+.second{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.second img{
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+}
+
+.second div p{
+    font-size: 15px;
+}
+
+.second div p:nth-child(1){
+    font-size: 13px;
+    color: rgb(203, 203, 203);
+    margin: 0;
+}
+.second div p:nth-child(2){
+    color: rgb(170, 170, 170);
+    margin: 0;
+}
+
+.third{
+    display: flex;
+    align-items: center;
+    width: 35%;
+    margin-left: 20px;
+}
+
+.third img{
+    margin-right: 10px;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+}
