@@ -11,6 +11,7 @@ import {
 
 import App from './App.jsx'
 import NftSection from './Component/NftSection.jsx';
+import Transection from './Component/Transections/Transection.jsx';
 
 
 
@@ -29,7 +30,7 @@ const router = createBrowserRouter([
       },
       {
         path:"/trx",
-        element:<h1>trx section</h1>,
+        element:<Transection/>,
       },
     ]
   },

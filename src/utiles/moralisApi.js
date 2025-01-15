@@ -26,3 +26,18 @@ export const getWalletTokenBalancesPrice = async (address, chain) => {
     throw error;
   }
 };
+
+
+export const getWalletTrx = async(address,chain)=>{
+  try{
+    const response = await Moralis.EvmApi.wallets.getWalletHistory({
+      "chain": chain,
+      "order": "DESC",
+      "address": address
+    });
+    return  response.raw().result
+  }catch(e){
+    console.log(e)
+  }
+
+}

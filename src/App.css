@@ -1,4 +1,11 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
+
+
 #root {
+  font-family: "Poppins", serif;
   /* max-width: 1280px; */
   margin: 0;
   padding: 0;
@@ -337,7 +344,7 @@ cursor: pointer;
   height: 35px;
   border-radius: 50%
 }
-.loadChain img{
+.loadChain .img{
   background-color: #6a6a6a;
   width: 35px;
   height: 35px;
@@ -463,13 +470,14 @@ width: 95%;
 
 .nftsearch .search{
   border: 1px solid rgb(145, 145, 145);
-  width: 70%;
+  width: 92%;
   height: 110%;
   display: flex;
   align-items: center;
-  justify-content: space-around;
+  /* justify-content: space-around; */
   border-radius: 20px;
   padding: 2px;
+  margin-left: 10px;
 }
 
 .nftsearch .search input{
@@ -479,9 +487,10 @@ width: 95%;
   color: white;
   border: none;
   outline: none;
+  margin-left: 10px;
 }
 .nftsearch .search i{
-  margin-left: 5px;
+  margin-left: 10px;
 }
 
 .nftsearch .box{
@@ -550,7 +559,7 @@ width: 95%;
   align-items:baseline;
   justify-content: space-between;
   padding: 0px 10px;
-  line-height: 15px;
+  line-height: 17px;
   
   /* justify-content: ; */
 
@@ -565,11 +574,13 @@ width: 95%;
 }
 
 .nft .text .nftname {
+
   width: 70%; 
-  line-height: 16px;
+  line-height: 17px;
 }
 
 .nft .text .nftname p{
+  margin: 12px 0px 5px 0px;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -999,7 +1010,7 @@ border-radius: 10px;
 .Collections .minicollect .mini1 .names p:nth-child(2)
 {
   margin-top: 0;
-font-size: 10px;
+font-size: 11px;
 color: #797979;
 }
 .Collections .minicollect .mini1 .names p:nth-child(1)
@@ -1028,4 +1039,55 @@ color: #797979;
 .Collections .minicollect .ethprice p:nth-child(2) span{
   /* font-size: 11px; */
   color: #828282;
+}
+
+
+.NotFound{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgb(64, 64, 64);
+  width: 100%;
+  height: 50vh;
+  border-radius: 10px;
+  margin-top: 20px;
+}
+
+.NotFound .inner{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.NotFound .inner button{
+  width: 160px;
+  padding: 13px 10px;
+  border-radius: 9px;
+  border: none;
+  background-color: rgb(52, 160, 255);
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.nft .imgblur{
+  background-color: #626262;
+}
+
+.nft .text .nameblur{
+  width: 80%;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #626262;
+}
+.nft .text .collecblur{
+  width: 55%;
+  height: 20px;
+  border-radius: 5px;
+  background-color: #626262;
+}
+
+.LoadingNft{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
 }

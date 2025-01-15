@@ -16,12 +16,6 @@ export default function NftSearch({search,setShow,show}) {
         <i class="fa-solid fa-magnifying-glass"></i>
             <input type="text" placeholder='Search by name' onChange={search} />
         </div>
-        <div className="sort box">
-        <i class="fa-solid fa-sort"></i>
-        </div>
-        <div className="view box">
-        <i class="fa-solid fa-box"></i>
-        </div>
     </div>
     </>
   )

@@ -13,7 +13,7 @@ export default function MiniCollect({topOffer,img,TotalNft,name,listing}) {
                     </div>
                 </div>
                 <div className='ethprice'>
-                    <p>{topOffer?topOffer*TotalNft:""}ETH</p>
+                    <p>{topOffer?topOffer*TotalNft:""} ETH</p>
                     <p><span>floor:</span> {topOffer} ETH</p>
                 </div>
   </div>

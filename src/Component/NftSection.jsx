@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { getNfts } from '../utiles/getNfts'
 import { useLocation } from 'react-router'
 import NftSearch from './NftSearch';
@@ -6,24 +6,29 @@ import NftBox from "./NftBox"
 import LiftNft from './LiftNft';
 import Collections from "./Collections"
 import { use } from 'react';
+import NotFound from './NotFound';
+import LoadingNft from './LoadingNft';
 
 export default function NftSection() {
-  let [nft,setNft] = useState([]);
+  let [nft,setNft] = useState();
+  let [loading,setloading] = useState(false);
   let[show,setShow] =useState(false);
-
-  let [filternft,setFilternft] = useState();
+  let flag  = useRef(true)
+  let [filternft,setFilternft] = useState([]);
   let {state} = useLocation();
   useEffect(()=>{
     const fetch=async()=>{
-      if(state.address){
+      if(state.address  && flag){
         setNft(await getNfts(state.address))
+        setloading(true)
+        flag = true;
       }
     }
     fetch()
-  },[state])
+  },[])
 
   useEffect(()=>{
-    setFilternft(nft.Data)
+    setFilternft(nft?.Data)
   },[nft])
 
   const search = (e) => {
@@ -40,7 +45,8 @@ export default function NftSection() {
         <NftSearch search={search} setShow={setShow} show={show}/>
         <div className="innerBox">
        {show?<Collections Data={nft}></Collections>:null}
-        <NftBox Data={filternft} state={state}></NftBox>
+       
+        {loading?filternft?.length?<NftBox Data={filternft} state={state}></NftBox>:<NotFound normal={()=>{setFilternft(nft?.Data)}}></NotFound>:<LoadingNft></LoadingNft>}
         </div>
     </>
 
