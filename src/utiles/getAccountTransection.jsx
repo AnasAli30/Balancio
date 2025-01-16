@@ -25,7 +25,7 @@ export const getAccountTransection=async(address)=>{
    const data2= data.filter((pro)=>{
         return pro.possible_spam==false
     }).sort((a,b)=>{
-        return b.block_number - a.block_number;
+     return Math.floor(new Date(b.block_timestamp) / 1000) - Math.floor(new Date(a.block_timestamp) / 1000)
     })
     
     return data2

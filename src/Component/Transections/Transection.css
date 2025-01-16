@@ -1,20 +1,65 @@
+.transection{
+    margin-top: 10px;
+}
+
 .transection table {
     width: 100%;
    
     /* text-align: center; */
 }
 
+
+a{
+    color: white;
+    text-decoration: none;
+}
+
 .transection .tablerow{
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    transition: 0.3s ease-in-out;
+    cursor: pointer;
+    border-radius: 20px;
+    padding: 2px 5px;
+    /* margin-bottom: 10px; */
 }
+.transection .tablerow:hover{
+    background-color: rgba(143, 143, 143, 0.137);
+    scale: 1.05;
+}
+
+
+
+
 .transection .tablerow .first{
     width: 30%;
 }
-.transection .tablerow .first .time{
-    color: rgb(203, 203, 203);
+.transection .tablerow .loading-first{
+    width: 37%;
 }
+
+
+.transection .tablerow .first .time{
+    font-size: 15px;
+    color: rgb(203, 203, 203);
+    margin-bottom: 6px;
+    padding: 2px;
+    text-align: center;
+    background-color: #fe815fc6;
+    border-radius: 20px;
+    width:170px;
+}
+.transection .tablerow .loading-first .time{
+    font-size: 15px;
+    color: rgb(203, 203, 203);
+    margin-bottom: 6px;
+    padding: 2px;
+    text-align: center;
+    background-color: #fe815fc6;
+    border-radius: 20px;
+    width:170px;
+}
+
 
 
 .transection .tablerow .first .add{
@@ -23,8 +68,26 @@
     color: rgb(170, 170, 170);
     font-size: 14px;
 }
+.transection .tablerow .loading-first .add{
+    display: flex;
+    align-items: center;
+    color: rgb(170, 170, 170);
+    font-size: 14px;
+}
+.transection .tablerow .loading-first .add span{
+    background-color: rgb(68, 68, 68);
+    width: 90px;
+    height: 20px;
+}
 
 .transection .tablerow .first .add img{
+    width: 19px;
+    height: 19px;
+    margin-right: 3px;
+    border-radius: 50%;
+   
+}
+.transection .tablerow .loading-first .add img{
     width: 19px;
     height: 19px;
     margin-right: 3px;
@@ -39,7 +102,19 @@
     align-items: center;
 }
 
+.loading-second{
+    width: 30%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
 .second img{
+    width: 30px;
+    height: 30px;
+    margin-right: 7px;
+}
+.loading-second img{
     width: 30px;
     height: 30px;
     margin-right: 7px;
@@ -48,15 +123,35 @@
 .second div p{
     font-size: 15px;
 }
+.loading-second div p{
+    font-size: 15px;
+}
 
 .second div p:nth-child(1){
     font-size: 13px;
     color: rgb(203, 203, 203);
     margin: 0;
 }
+.loading-second div p:nth-child(1){
+    font-size: 13px;
+    width: 140px;
+    height: 20px;
+    background-color: rgb(68, 68, 68);
+    color: rgb(203, 203, 203);
+    margin: 0;
+}
+
 .second div p:nth-child(2){
     color: rgb(170, 170, 170);
     margin: 0;
+}
+.loading-second div p:nth-child(2){
+    font-size: 13px;
+    width: 80px;
+    height: 18px;
+    background-color: rgb(68, 68, 68);
+    color: rgb(203, 203, 203);
+    margin-top: 4px;
 }
 
 .third{
@@ -71,4 +166,16 @@
     width: 30px;
     height: 30px;
     border-radius: 50%;
+}
+
+.third p span{
+    font-size: 13px;
+    color: rgb(134, 134, 134);
+}
+
+.table-line{
+ width: 98%;
+ border: 1px solid rgb(60, 60, 60);
+ margin: 0 auto;
+ margin: 10px;
 }
