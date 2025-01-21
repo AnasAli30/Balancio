@@ -1,0 +1,22 @@
+.home{
+    height: 95vh;
+}
+
+.home .head{
+    height: 60vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.home .head h2{
+    font-size: 40px;
+    margin-bottom: 60px;
+}
+
+.home .head .connect{
+    width: 190px;
+    padding: 20px;
+    justify-content: center;
+}
