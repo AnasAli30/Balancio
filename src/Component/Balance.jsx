@@ -5,7 +5,7 @@ export default function Balance({web3state}) {
   console.log(web3state)
   return (
     <div className="Balance">
-      <Link className='link'  to={'/'}>
+      <Link className='link'  to={'/home'}>
         <div className="Portfolio box">Portfolio <div className="underline"></div></div>
         </Link>
         <Link className='link' to={'/nft'} state={{address:web3state.selectedAccount,signer:web3state.signer}}>

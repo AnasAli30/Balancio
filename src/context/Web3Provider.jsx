@@ -14,7 +14,7 @@ export default function Web3Provider({children}) {
       const [Alltoken, setAllToken] = useState([]);
       const [totalBalance,setTotalBalace] = useState(0);
       const[Loading,setLoading] = useState(false);
-  let [buttn,setbuttn] = useState("connect");
+  let [buttn,setbuttn] = useState("Connect Wallet");
   return (
     <>
 

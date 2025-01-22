@@ -9,6 +9,7 @@ import Web3Provider from './context/Web3Provider'
 import Nav from './Component/Nav'
 import {useWeb3Context} from "./context/UseWeb3Context"
 
+import Particle from './Component/particles/particles'
 
 function App() {
     
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <>
+    {/* <Particle /> */}
     <div className="Container">
     <Web3Provider web3state={web3state}>
      <Nav handleWallet={handleWallet} web3state={web3state} buttn={buttn}></Nav>

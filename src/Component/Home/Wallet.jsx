@@ -8,6 +8,7 @@ import { getAccountBalace } from '../../utiles/getAccountBalace'
 import { initializeMoralis } from '../../utiles/moralisApi'
 import { useNavigate } from 'react-router'
 import { useRef,useEffect,useState } from 'react'
+import Particle from '../particles/particles'
 export default function Wallet() {
   let navigateTo = useNavigate()
   let {web3state,setweb3state,buttn,setToken,setAllToken,setTotalBalace,setLoading,setbuttn} = useWeb3Context();
@@ -32,7 +33,7 @@ export default function Wallet() {
         setweb3state({undefined})
         setbuttn("connect again");
       }else{
-        setbuttn("connecting");
+        setbuttn("Connecting...");
       const {signer,selectedAccount,chainId,balance} = await getWeb3State();
         setweb3state({signer,selectedAccount,chainId,balance})
         try{
@@ -43,7 +44,7 @@ export default function Wallet() {
         setToken(FilterData);
         setAllToken(AllData);
         setTotalBalace(total);
-        navigateTo("/nft")
+        navigateTo("/home")
         }catch(error){
           console.log("error",error)
         }
@@ -58,13 +59,39 @@ export default function Wallet() {
     
   }
   return (
-    <div className='home'>
-      <div className="head">
-        <h2>BALANCIO</h2>
-       <Search></Search>
-        <p>Or</p>
-        <Btn className="follow connect" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn>
+    <div className="particle">
+    <div className="home">
+      <Particle />
+      <div className="wallet-container">
+        <h1 className="title">BALANCIO</h1>
+        <button onClick={handleWallet} className="connect-btn" type="button">
+          {buttn}
+        </button>
+
+        <div className="features">
+          <div className="feature-box">
+            <h3 className="feature-title">Multi-Network Support</h3>
+            <p className="feature-desc">
+              Access and manage your balances from multiple blockchain networks in one dashboard.
+            </p>
+          </div>
+          <div className="feature-box">
+            <h3 className="feature-title">NFT Tracking</h3>
+            <p className="feature-desc">
+              View your NFT collections with detailed metadata and historical insights.
+            </p>
+          </div>
+          <div className="feature-box">
+            <h3 className="feature-title">Transaction History</h3>
+            <p className="feature-desc">
+              Analyze and export your complete transaction history across networks.
+            </p>
+          </div>
+        </div>
+
+       
       </div>
     </div>
+  </div>
   )
 }
