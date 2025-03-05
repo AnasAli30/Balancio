@@ -8,12 +8,18 @@ import {getAccountBalace} from "./utiles/getAccountBalace"
 import Web3Provider from './context/Web3Provider'
 import Nav from './Component/Nav'
 import {useWeb3Context} from "./context/UseWeb3Context"
-
+import { useNavigate } from 'react-router'
 import Particle from './Component/particles/particles'
 
 function App() {
+  let navigateTo = useNavigate()
     
     let {web3state,token,Alltoken,totalBalance,Loading,handleWallet,buttn} = useWeb3Context();
+    useEffect(()=>{
+      if(web3state.selectedAccount == undefined){
+        navigateTo("/wallet")
+      }
+    },[])
 
   return (
     <>

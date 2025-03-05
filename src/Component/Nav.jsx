@@ -7,12 +7,13 @@ import ProfileDetails from './ProfileDetails'
 import MinorDetails from "./MinorDetails"
 import MajorDetails from "./MajorDetails"
 import Balance from './Balance'
+import ConnectButton from './ConnectButton'
 
 export default function Nav({handleWallet,web3state,buttn}) {
   return (
     <>
     <div className="nav">
-        <Btn className="follow" handleWallet={handleWallet} web3state={web3state} btn={buttn}></Btn>
+        {web3state.selectedAccount!=undefined? <ConnectButton buttn={buttn}></ConnectButton>:""}
            <Search></Search>
         </div>
         <ProfileDetails accDetails={web3state} handleWallet={handleWallet} web3state={web3state} btn={buttn}></ProfileDetails>

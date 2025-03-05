@@ -38,7 +38,7 @@ export const getAccountBalace=async(selectedAccount)=> {
     img: pro.logo || "https://img.freepik.com/premium-vector/simple-404-error-sign-concept-technical-fault-danger-notice-construction-page-http-response-code-isolated-white-background-flat-style-trend-modern-logo-design-vector-illustration_117142-142.jpg",
     amount: amt,
     PercentChange: pro?.['24hrPercentChange'],
-    usd_Value:pro.usd_value.toFixed(2)
+    usd_Value:pro?.usd_value?.toFixed(2)
   };
           }
         }).filter(Boolean); 
