@@ -34,8 +34,15 @@ Wallet address: ${selectedAccount}`
             const res =  await axios.post(`http://localhost:3000/api/authentication?accountAddress=${selectedAccount}`,{signature})
 
             if(res.status==200){
-        toast.success(res.data.message)
-        localStorage.setItem("token",res.data.token)
+              let token = res.data.token
+        
+        const res2 = await axios.post(`http://localhost:3000/api/register?accountAddress=${selectedAccount}`,{token})
+
+        if(res2.status==200){
+          toast.success(res2.data.message);
+          toast.success(res.data.message)
+        localStorage.setItem("token",token)
+        }
             }else{
              toast.success(res.data.message)
              return
