@@ -1,47 +1,44 @@
 const express = require('express');
-const multer = require('multer');
 const router = express.Router();
 const BUser = require('../models/UserSchema');
+const multer = require('multer');
+const cloudinary = require('cloudinary').v2;
+const { CloudinaryStorage } = require('multer-storage-cloudinary');
+require('dotenv').config();
 
-// Set up multer for file uploads (stores in 'uploads/' folder)
-const storage = multer.diskStorage({
-  destination: "../uploads/",
-  filename: (req, file, cb) => {
-    cb(null, Date.now() + "-" + file.originalname);
+// Configure Cloudinary
+cloudinary.config({
+  cloud_name: process.env.CLOUDINARY_CLOUD_NAME,
+  api_key: process.env.CLOUDINARY_API_KEY,
+  api_secret: process.env.CLOUDINARY_API_SECRET,
+});
+
+// Configure Multer Storage for Cloudinary
+const storage = new CloudinaryStorage({
+  cloudinary,
+  params: {
+    folder: 'profile-images', // Cloudinary folder
+    allowed_formats: ['jpg', 'png', 'jpeg'],
   },
 });
+
 const upload = multer({ storage });
 
-// Image Upload Route
+// Upload Image to Cloudinary and Update User in DB
 router.post("/upload", upload.single("image"), async (req, res) => {
-  if (!req.file) {
-    return res.status(400).json({ message: "No file uploaded" });
-  }
-
-  // Generate an image URL (adjust this to your storage method)
-  const imageUrl = `http://localhost:3000/uploads/${req.file.filename}`;
-  res.status(200).json({ imageUrl });
-});
-
-// Profile Image Update Route
-router.post("/update", async (req, res) => {
   try {
-    const { accountAddress } = req.query;
-    const { image } = req.body;
+    if (!req.file) {
+      return res.status(400).json({ message: "No file uploaded" });
+    }
 
-    if (!accountAddress) return res.status(400).json({ message: "Account address is required" });
-
-    const user = await BUser.findOne({ address: accountAddress });
-    if (!user) return res.status(404).json({ message: "User not found" });
-
-    user.image = image;
-    await user.save();
-
-    res.status(200).json({ message: "Profile image updated successfully", imageUrl: user.image });
-  } catch (e) {
-    console.error("Error updating profile image:", e);
-    res.status(500).json({ message: "Failed to update profile image" });
+    const imageUrl = req.file.path; // Cloudinary URL
+    res.status(200).json({ imageUrl });
+  } catch (error) {
+    console.error("Error uploading to Cloudinary:", error);
+    res.status(500).json({ message: "Upload failed" });
   }
 });
+
+
 
 module.exports = router;
