@@ -9,14 +9,14 @@ import MajorDetails from "./MajorDetails"
 import Balance from './Balance'
 import ConnectButton from './ConnectButton'
 
-export default function Nav({handleWallet,web3state,buttn}) {
+export default function Nav({handleWallet,web3state,buttn,userData}) {
   return (
     <>
     <div className="nav">
         {web3state.selectedAccount!=undefined? <ConnectButton buttn={buttn}></ConnectButton>:""}
            <Search></Search>
         </div>
-        <ProfileDetails accDetails={web3state} handleWallet={handleWallet} web3state={web3state} btn={buttn}></ProfileDetails>
+        <ProfileDetails userData={userData} accDetails={web3state} handleWallet={handleWallet} web3state={web3state} btn={buttn}></ProfileDetails>
         <MinorDetails></MinorDetails>
         <MajorDetails></MajorDetails> 
         <div className="line"></div>

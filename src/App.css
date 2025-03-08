@@ -114,6 +114,7 @@
 .detail .id{
   color: #313131;
   font-size: 23px;
+  cursor: pointer;
 }
 
 
@@ -1090,4 +1091,75 @@ color: #797979;
   display: flex;
   justify-content: space-around;
   flex-wrap: wrap;
+}
+
+.profile-wrapper {
+  position: relative;
+  display: inline-block;
+}
+
+/* Edit icon inside the profile (dimmed by default) */
+.edit-icon {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
+  padding: 8px;
+  border-radius: 50%;
+  opacity: 0; /* Hidden initially */
+  transition: opacity 0.3s ease-in-out;
+  cursor: pointer;
+  pointer-events: auto; /* Ensures it's clickable */
+}
+
+/* Show the icon on hover */
+.profile-wrapper:hover .edit-icon {
+  opacity: 1;
+}
+
+.idinput{
+  display: block;
+  border: none;
+  color: #878787;
+  font-size:23px;
+  background-color: #1d1d1d;
+  font-weight: bold;
+  outline: none;
+  margin: 10px;
+  margin-left: 0;
+  letter-spacing: 1px;
+  
+}
+
+.error-text{
+  color: red;
+  font-size: small;
+}
+.connect-wallet {
+  background-color: #3396ff; /* WalletConnect blue */
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 12px 24px;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background 0.3s ease-in-out;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.connect-wallet:hover {
+  background-color: #0073e6; /* Darker blue on hover */
+}
+
+.connect-wallet:active {
+  background-color: #005bb5;
+}
+
+.connect-wallet img {
+  width: 20px;
+  height: 20px;
 }

@@ -28,7 +28,8 @@ Click to sign in and accept the Terms of Service and Privacy Policy.
 This request will not trigger a blockchain transaction or cost any gas fees.
           
 Wallet address: ${selectedAccount}` 
-          if(!localStorage.getItem("token")){
+let token =localStorage.getItem("token");
+          if(!token){
             const signature = await signer.signMessage(message);
           try{
             const res =  await axios.post(`http://localhost:3000/api/authentication?accountAddress=${selectedAccount}`,{signature})
@@ -54,6 +55,15 @@ Wallet address: ${selectedAccount}`
             return false;
             
           }
+        }else{
+          try{
+          const userData=  await axios.get(`http://localhost:3000/api/user?accountAddress=${selectedAccount}`)}
+          catch(e){
+            if(e.status ==404){
+              await axios.post(`http://localhost:3000/api/register?accountAddress=${selectedAccount}`,{token})
+            }
+          }
+        
         }
         
         

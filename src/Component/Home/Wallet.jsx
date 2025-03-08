@@ -32,7 +32,7 @@ const metadata = {
 export default function Wallet() {
 
   let navigateTo = useNavigate()
-  let {web3state,setweb3state,buttn,setToken,setAllToken,setTotalBalace,setLoading,setbuttn} = useWeb3Context();
+  let {web3state,setweb3state,buttn,setToken,setAllToken,setTotalBalace,setLoading,setbuttn,setuserData} = useWeb3Context();
 
 
 createAppKit({
@@ -64,8 +64,9 @@ createAppKit({
         setweb3state({signer,selectedAccount,chainId,balance})
         try{
         setLoading(true);
-        let {FilterData,AllData,total} = await getAccountBalace(selectedAccount);
+        let {FilterData,AllData,total,userData} = await getAccountBalace(selectedAccount);
         
+        setuserData(userData.data)
         setLoading(false);
         setToken(FilterData);
         setAllToken(AllData);

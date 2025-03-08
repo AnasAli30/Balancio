@@ -6,7 +6,8 @@ export default function ConnectButton({buttn}) {
 
   return (
     <>
-      <button className='follow' onClick={() => open()}>{buttn}</button>
+      <button className='connect-wallet' onClick={() => open()}>
+        {buttn}</button>
       {/* <button onClick={() => open({ view: 'Networks' })}>Open Network Modal</button> */}
     </>
   )

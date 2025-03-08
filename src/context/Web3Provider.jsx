@@ -13,12 +13,13 @@ export default function Web3Provider({children}) {
   const [token, setToken] = useState([]);
       const [Alltoken, setAllToken] = useState([]);
       const [totalBalance,setTotalBalace] = useState(0);
+      const [userData,setuserData] = useState([]);
       const[Loading,setLoading] = useState(false);
   let [buttn,setbuttn] = useState("Connect Wallet");
   return (
     <>
 
-    <Web3Context.Provider value={{web3state,setweb3state,token,Alltoken,totalBalance,Loading,buttn,setToken,setAllToken,setTotalBalace,setLoading,setbuttn}}>
+    <Web3Context.Provider value={{web3state,setweb3state,token,Alltoken,totalBalance,Loading,buttn,setToken,setAllToken,setTotalBalace,setLoading,setbuttn,setuserData,userData}}>
 {children}
     </Web3Context.Provider>
    

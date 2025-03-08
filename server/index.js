@@ -4,6 +4,7 @@ const authentication = require("./routes/authenticationRoutes")
 const register = require("./routes/registerRoutes")
 const update = require("./routes/updateRoutes")
 const upload = require("./routes/uploadRoutes")
+const user = require("./routes/userRoutes")
 const app = express();
 require('dotenv').config()
 const connectDB = require('./db/connect')
@@ -17,6 +18,7 @@ app.use("/api",authentication);
 app.use("/api",register);
 app.use("/api",update);
 app.use("/api",upload);
+app.use("/api",user);
 
 
 app.get("/",(req,res)=>{

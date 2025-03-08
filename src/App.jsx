@@ -14,7 +14,7 @@ import Particle from './Component/particles/particles'
 function App() {
   let navigateTo = useNavigate()
     
-    let {web3state,token,Alltoken,totalBalance,Loading,handleWallet,buttn} = useWeb3Context();
+    let {web3state,token,Alltoken,totalBalance,Loading,handleWallet,buttn,userData} = useWeb3Context();
     useEffect(()=>{
       if(web3state.selectedAccount == undefined){
         navigateTo("/wallet")
@@ -26,7 +26,7 @@ function App() {
     {/* <Particle /> */}
     <div className="Container">
     <Web3Provider web3state={web3state}>
-     <Nav handleWallet={handleWallet} web3state={web3state} buttn={buttn}></Nav>
+     <Nav handleWallet={handleWallet} web3state={web3state} buttn={buttn} userData={userData}></Nav>
     <Outlet context={[handleWallet,web3state,buttn,Loading,Alltoken,totalBalance,token]}/>
     </Web3Provider>
     </div>

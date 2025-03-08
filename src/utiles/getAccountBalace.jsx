@@ -5,10 +5,19 @@ import {ethers} from "ethers"
 window.process = process;
 import {getWalletTokenBalancesPrice , initializeMoralis} from "./moralisApi.js";
 import chainsId from "../constant/chainID.json"
+import toast from 'react-hot-toast';
 
 export const getAccountBalace=async(selectedAccount)=> {
    
     try {
+
+     const userData=  await axios.get(`http://localhost:3000/api/user?accountAddress=${selectedAccount}`)
+
+     if(!userData){
+      toast.error("error!!")
+      throw Error("Server Error")
+      return
+     }
       
       const getalltrx =async ()=>{
         const alltrx=[];
@@ -71,7 +80,7 @@ totalamt = totalamt+ pro.usd_value
       return total;
       }
 
-      return {FilterData:FilterData,AllData:AllData,total:totalBalance()};
+      return {FilterData:FilterData,AllData:AllData,total:totalBalance(),userData:userData};
 
     } catch (error) {
       console.error("Error fetching token balances:", error);
