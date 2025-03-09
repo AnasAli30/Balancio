@@ -1,10 +1,11 @@
-import Moralis from 'moralis';
+const Moralis = require('moralis').default
+require('dotenv').config();
+const  chainsId = require("../constant/chainID.json")
 
-
-
-export const initializeMoralis= async()=>{
+const initializeMoralis= async()=>{
 try{
-  await Moralis.start({ apiKey: import.meta.env.VITE_MORALIS});
+  await Moralis.start({ apiKey: process.env.VITE_MORALIS});
+  console.log("Molarise initialized")
 }catch(error){
   console.log(error);
 }
@@ -12,14 +13,14 @@ try{
 
 
 
-export const getWalletTokenBalancesPrice = async (address, chain) => {
+const getWalletTokenBalancesPrice = async (address, chain) => {
   try {
 
     const response = await Moralis.EvmApi.wallets.getWalletTokenBalancesPrice({
       "chain": chain,
       "address": address
     });
-    // console.log(response.raw())
+    console.log(response.raw())
     return response.raw().result;
   } catch (error) {
     console.error("Error fetching token prices:", error);
@@ -28,7 +29,7 @@ export const getWalletTokenBalancesPrice = async (address, chain) => {
 };
 
 
-export const getWalletTrx = async(address,chain)=>{
+const getWalletTrx = async(address,chain)=>{
   try{
     const response = await Moralis.EvmApi.wallets.getWalletHistory({
       "chain": chain,
@@ -41,3 +42,5 @@ export const getWalletTrx = async(address,chain)=>{
   }
 
 }
+
+module.exports = {initializeMoralis,getWalletTokenBalancesPrice,getWalletTrx}
