@@ -6,6 +6,8 @@ const update = require("./routes/updateRoutes")
 const upload = require("./routes/uploadRoutes")
 const user = require("./routes/userRoutes")
 const data = require("./routes/dataRoutes")
+const trx= require("./routes/trxdataRoutes")
+const nft = require("./routes/nftdataRoutes")
 const {initializeMoralis} = require("./utiles/moralisApi")
 const app = express();
 require('dotenv').config()
@@ -21,6 +23,8 @@ app.use("/api",update);
 app.use("/api",upload);
 app.use("/api",user);
 app.use("/api",data);
+app.use("/api",trx);
+app.use("/api",nft);
 
 
 app.get("/",(req,res)=>{

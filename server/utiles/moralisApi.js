@@ -1,6 +1,5 @@
 const Moralis = require('moralis').default
 require('dotenv').config();
-const  chainsId = require("../constant/chainID.json")
 
 const initializeMoralis= async()=>{
 try{
